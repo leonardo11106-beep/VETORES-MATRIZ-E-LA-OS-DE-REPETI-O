@@ -1,41 +1,28 @@
 import java.util.Scanner;
 
-public class JogoDaVelha {
+public class RankingNotas {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        char[][] tabuleiro = new char[3][3];
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                tabuleiro[i][j] = ' ';
+        String[] alunos = new String[5];
+        double[][] notas = new double[5][2];
+        double[] medias = new double[5];
+
+        // Ler nomes e notas
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Nome do aluno " + (i+1) + ": ");
+            alunos[i] = sc.next();
+            for (int j = 0; j < 2; j++) {
+                System.out.print("Nota " + (j+1) + " de " + alunos[i] + ": ");
+                notas[i][j] = sc.nextDouble();
             }
+            medias[i] = (notas[i][0] + notas[i][1]) / 2.0;
         }
 
-        boolean jogadorX = true; // alternar jogadores
-
-        for (int jogada = 0; jogada < 9; jogada++) {
-            // Mostrar tabuleiro
-            System.out.println("\nTabuleiro:");
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    System.out.print("[" + tabuleiro[i][j] + "]");
-                }
-                System.out.println();
-            }
-
-            System.out.print("\nJogador " + (jogadorX ? "X" : "O") + 
-                             ", informe linha (0-2): ");
-            int linha = sc.nextInt();
-            System.out.print("Informe coluna (0-2): ");
-            int coluna = sc.nextInt();
-
-            if (tabuleiro[linha][coluna] == ' ') {
-                tabuleiro[linha][coluna] = jogadorX ? 'X' : 'O';
-                jogadorX = !jogadorX; // alternar jogador
-            } else {
-                System.out.println("Posição já ocupada! Tente outra.");
-                jogada--; // não contar jogada
-            }
+        // Mostrar médias
+        System.out.println("\nMédias dos alunos:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(alunos[i] + ": " + medias[i]);
         }
 
         sc.close();
