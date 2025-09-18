@@ -1,29 +1,28 @@
-mport java.util.Scanner;
-public class java {
+import java.util.Random;
+
+public class ParesImpares {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] numeros = new int[10];
+        Random random = new Random();
+        int[] numeros = new int[15];
 
+        // Preencher vetor com números aleatórios de 1 a 100
         for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Digite o " + (i + 1) + "º número: ");
-            numeros[i] = sc.nextInt();
+            numeros[i] = random.nextInt(100) + 1;
         }
 
-        int maior = numeros[0];
-        int menor = numeros[0];
-
-        for (int i = 1; i < numeros.length; i++) {
-            if (numeros[i] > maior) {
-                maior = numeros[i];
-            }
-            if (numeros[i] < menor) {
-                menor = numeros[i];
+        // Mostrar pares e ímpares
+        System.out.println("Números pares:");
+        for (int num : numeros) {
+            if (num % 2 == 0) {
+                System.out.print(num + " ");
             }
         }
 
-        System.out.println("\nMaior número: " + maior);
-        System.out.println("Menor número: " + menor);
-
-        sc.close();
+        System.out.println("\n\nNúmeros ímpares:");
+        for (int num : numeros) {
+            if (num % 2 != 0) {
+                System.out.print(num + " ");
+            }
+        }
     }
 }
