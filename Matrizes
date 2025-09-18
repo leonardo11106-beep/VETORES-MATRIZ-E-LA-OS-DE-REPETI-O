@@ -1,28 +1,41 @@
-import java.util.Random;
+import java.util.Scanner;
 
-public class MatrizDiagonal {
+public class MatrizSomaLinhasColunas {
     public static void main(String[] args) {
-        Random random = new Random();
-        int[][] matriz = new int[4][4];
+        Scanner sc = new Scanner(System.in);
+        int[][] matriz = new int[3][3];
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                matriz[i][j] = random.nextInt(100) + 1;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Digite o valor para [" + i + "][" + j + "]: ");
+                matriz[i][j] = sc.nextInt();
             }
         }
 
-        System.out.println("Matriz 4x4:");
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        System.out.println("\nMatriz 3x3:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 System.out.print(matriz[i][j] + "\t");
             }
             System.out.println();
         }
 
-        System.out.println("\nDiagonal Principal:");
-        for (int i = 0; i < 4; i++) {
-            System.out.print(matriz[i][i] + " ");
+        for (int i = 0; i < 3; i++) {
+            int somaLinha = 0;
+            for (int j = 0; j < 3; j++) {
+                somaLinha += matriz[i][j];
+            }
+            System.out.println("Soma da linha " + (i + 1) + ": " + somaLinha);
         }
+
+        for (int j = 0; j < 3; j++) {
+            int somaColuna = 0;
+            for (int i = 0; i < 3; i++) {
+                somaColuna += matriz[i][j];
+            }
+            System.out.println("Soma da coluna " + (j + 1) + ": " + somaColuna);
+        }
+
+        sc.close();
     }
 }
-
